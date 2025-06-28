@@ -953,7 +953,7 @@ Purpose: Package your application and all its dependencies into a single, portab
 
 ### 12\. `Dockerfile:`
 
-```docker
+```dockerfile
 # Use an official Python runtime as a parent image
 FROM python:3.10-slim-buster
 
