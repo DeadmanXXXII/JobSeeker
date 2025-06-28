@@ -547,10 +547,13 @@ class JobMatcher:
         # Combine keyword score with LLM score
         combined_score = (score / total_keywords + llm_numeric_score) / 2
         return min(1.0, max(0.0, combined_score)) # Ensure score is between 0 and 1
+```
 
-8. src/cv_tailor/tailor.py
+
+### 8\. `src/cv_tailor/tailor.py`
+
 Python
-
+```
 import logging
 from src.matching_engine.llm_integrator import LLMIntegrator
 import os
@@ -628,9 +631,11 @@ class CVTailor:
         # which is more complex and usually involves using templates and libraries
         # like `python-docx` or `reportlab`. For LLM-generated content,
         # saving as text files is simpler for review.
-9. src/database/manager.py (Simplified SQLite Example)
-Python
+```
+### 9\. `src/database/manager.py` (Simplified SQLite Example)
 
+Python
+```
 import sqlite3
 import json
 import logging
@@ -739,10 +744,11 @@ class DatabaseManager:
             jobs.append(job)
         conn.close()
         return jobs
+```
+### 10\. `src/notifications/notifier.py` (Simplified Email Example)
 
-10. src/notifications/notifier.py (Simplified Email Example)
 Python
-
+```
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -796,10 +802,12 @@ class Notifier:
         
         body += "\nCheck your tailored_output folder for full documents."
         self.send_email(recipient_email, subject, body)
+```
 
-11. src/scheduler/main_scheduler.py (Orchestration Logic)
+### 11\. `src/scheduler/main_scheduler.py` (Orchestration Logic)
+
 Python
-
+```
 import logging
 import os
 from datetime import datetime
@@ -919,6 +927,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     scrape_and_process_jobs_task() # Run once immediately on startup for testing/initial run
     start_scheduler()
+```
 Services Involved & Cloud Deployment
 Local Development Environment
 Python 3.9+: The language runtime.
@@ -940,10 +949,10 @@ Containerization (Docker):
 
 Purpose: Package your application and all its dependencies into a single, portable unit. This ensures that your code runs consistently across different environments (local, staging, production).
 
-Dockerfile:
+### 12\. `Dockerfile:`
 
 Dockerfile
-
+```
 # Use an official Python runtime as a parent image
 FROM python:3.10-slim-buster
 
@@ -968,7 +977,7 @@ CMD ["python", "src/scheduler/main_scheduler.py"]
 # If running as a web service for API endpoint:
 # CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8080", "src.app.main:app"]
 Cloud Platform: Google Cloud Platform (GCP)
-
+```
 Compute:
 
 Google Cloud Run: Recommended for this specific use case. It's a serverless platform for containerized applications. You deploy your Docker image, and it handles scaling (to zero, meaning you only pay when code is running) and infrastructure.
@@ -1007,10 +1016,10 @@ Deployment Automation (GitHub Actions):
 
 Purpose: Automate the process of building your Docker image and deploying it to Cloud Run whenever you push changes to your GitHub repository.
 
-.github/workflows/deploy.yml (Example):
+### 13\. `.github/workflows/deploy.yml` (Example):
 
 YAML
-
+```
 name: Deploy to Cloud Run
 
 on:
@@ -1061,8 +1070,9 @@ jobs:
           --set-env-vars=DATABASE_URL=${{ secrets.DATABASE_URL }},OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }},NOTIFICATION_EMAIL=${{ secrets.NOTIFICATION_EMAIL }},EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }},LLM_MODEL=${{ secrets.LLM_MODEL }} \ # Pass secrets
           --cpu=1 --memory=2Gi \ # Adjust resources based on your needs
           --min-instances=1 --max-instances=1 # For a scheduler, you typically want 1 min instance
-Workload Identity Federation: This is the secure way to authenticate GitHub Actions with GCP. It requires setting up a Workload Identity Pool and Provider in GCP IAM.
-
+Workload Identity Federation:
+This is the secure way to authenticate GitHub Actions with GCP. It requires setting up a Workload Identity Pool and Provider in GCP IAM.
+```
 GitHub Secrets: Store your DATABASE_URL, OPENAI_API_KEY, etc., as repository secrets in GitHub. Never commit these directly to your code!
 
 This complete setup provides a robust, scalable, and automated solution for your AI job hunter. It's a significant undertaking but, works well.
