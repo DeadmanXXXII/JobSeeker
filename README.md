@@ -631,6 +631,7 @@ class CVTailor:
         # which is more complex and usually involves using templates and libraries
         # like `python-docx` or `reportlab`. For LLM-generated content,
         # saving as text files is simpler for review.
+
 ```
 ### 9\. `src/database/manager.py` (Simplified SQLite Example)
 
@@ -745,6 +746,7 @@ class DatabaseManager:
         conn.close()
         return jobs
 ```
+
 ### 10\. `src/notifications/notifier.py` (Simplified Email Example)
 
 python
@@ -1020,7 +1022,7 @@ Purpose: Automate the process of building your Docker image and deploying it to 
 
 ### 13\. `.github/workflows/deploy.yml` (Example):
 
-yaml
+.yaml
 ```
 name: Deploy to Cloud Run
 
