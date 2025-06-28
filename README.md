@@ -552,8 +552,8 @@ class JobMatcher:
 
 ### 8\. `src/cv_tailor/tailor.py`
 
-python
-```
+
+```python
 import logging
 from src.matching_engine.llm_integrator import LLMIntegrator
 import os
@@ -635,8 +635,8 @@ class CVTailor:
 ```
 ### 9\. `src/database/manager.py` (Simplified SQLite Example)
 
-python
-```
+
+```python
 import sqlite3
 import json
 import logging
@@ -749,8 +749,7 @@ class DatabaseManager:
 
 ### 10\. `src/notifications/notifier.py` (Simplified Email Example)
 
-python
-```
+```python
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -808,8 +807,7 @@ class Notifier:
 
 ### 11\. `src/scheduler/main_scheduler.py` (Orchestration Logic)
 
-python
-```
+```python
 import logging
 import os
 from datetime import datetime
@@ -955,8 +953,7 @@ Purpose: Package your application and all its dependencies into a single, portab
 
 ### 12\. `Dockerfile:`
 
-docker
-```
+```docker
 # Use an official Python runtime as a parent image
 FROM python:3.10-slim-buster
 
@@ -982,6 +979,7 @@ CMD ["python", "src/scheduler/main_scheduler.py"]
 # CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8080", "src.app.main:app"]
 Cloud Platform: Google Cloud Platform (GCP)
 ```
+
 Compute:
 
 Google Cloud Run: Recommended for this specific use case. It's a serverless platform for containerized applications. You deploy your Docker image, and it handles scaling (to zero, meaning you only pay when code is running) and infrastructure.
@@ -1022,8 +1020,7 @@ Purpose: Automate the process of building your Docker image and deploying it to 
 
 ### 13\. `.github/workflows/deploy.yml` (Example):
 
-.yaml
-```
+```yaml
 name: Deploy to Cloud Run
 
 on:
