@@ -552,7 +552,7 @@ class JobMatcher:
 
 ### 8\. `src/cv_tailor/tailor.py`
 
-Python
+python
 ```
 import logging
 from src.matching_engine.llm_integrator import LLMIntegrator
@@ -634,7 +634,7 @@ class CVTailor:
 ```
 ### 9\. `src/database/manager.py` (Simplified SQLite Example)
 
-Python
+python
 ```
 import sqlite3
 import json
@@ -747,7 +747,7 @@ class DatabaseManager:
 ```
 ### 10\. `src/notifications/notifier.py` (Simplified Email Example)
 
-Python
+python
 ```
 import smtplib
 from email.mime.text import MIMEText
@@ -806,7 +806,7 @@ class Notifier:
 
 ### 11\. `src/scheduler/main_scheduler.py` (Orchestration Logic)
 
-Python
+python
 ```
 import logging
 import os
@@ -928,6 +928,8 @@ if __name__ == "__main__":
     scrape_and_process_jobs_task() # Run once immediately on startup for testing/initial run
     start_scheduler()
 ```
+
+
 Services Involved & Cloud Deployment
 Local Development Environment
 Python 3.9+: The language runtime.
@@ -951,7 +953,7 @@ Purpose: Package your application and all its dependencies into a single, portab
 
 ### 12\. `Dockerfile:`
 
-Dockerfile
+docker
 ```
 # Use an official Python runtime as a parent image
 FROM python:3.10-slim-buster
@@ -1018,7 +1020,7 @@ Purpose: Automate the process of building your Docker image and deploying it to 
 
 ### 13\. `.github/workflows/deploy.yml` (Example):
 
-YAML
+yaml
 ```
 name: Deploy to Cloud Run
 
